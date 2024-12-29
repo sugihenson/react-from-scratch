@@ -1,0 +1,203 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 \CocoaLigature0 Create React App from scratch (no framework)\
+\
+{\field{\*\fldinst{HYPERLINK "https://hackteam.io/blog/create-react-project-from-scratch-without-framework/"}}{\fldrslt https://hackteam.io/blog/create-react-project-from-scratch-without-framework/}}\
+\
+Create new directory and cd\
+\
+
+\f1 \
+npm init -y\
+\
+
+\f0 \
+
+\f1 \
+npm install --save-dev webpack webpack-cli\
+\
+
+\f0 \
+Create new directory src, and then index.js inside of it\
+Add the following to package.json inside \'93scripts\'94\
+\
+
+\f1 \
+"start": "webpack --mode development",\
+"build": "webpack --mode=production"\
+\
+
+\f0 \
+
+\f1 \
+npm start \
+\
+
+\f0 \
+
+\f1 \
+npm install react react-dom\
+\
+
+\f0 \
+
+\f1 \
+npm install --save-dev @babel/core babel-loader @babel/preset-env @babel/preset-react\
+\
+
+\f0 \
+create webpack.config.js and add:\
+\
+
+\f1 \
+module.exports = \{\
+  module: \{\
+    rules: [\
+      \{\
+        test: /\\.js$/,\
+        exclude: /node_modules/,\
+        use: \{\
+          loader: 'babel-loader',\
+        \},\
+      \},\
+    ],\
+  \},\
+\};\
+\
+
+\f0 \
+create babel.config.json and add:\
+\
+
+\f1 \
+\{\
+  "presets": [\
+    [\
+      "@babel/preset-env",\
+      \{\
+        "targets": \{\
+          "esmodules": true\
+        \}\
+      \}\
+    ],\
+    [\
+      "@babel/preset-react",\
+      \{\
+        "runtime": "automatic"\
+      \}\
+    ]\
+  ]\
+\}\
+\
+
+\f0 \
+Add the following to index.js:\
+\
+
+\f1 \
+import ReactDOM from 'react-dom/client';\
+\
+function App() \{\
+  return <h1>Hello World</h1>;\
+\}\
+\
+const container = document.getElementById('root');\
+const root = ReactDOM.createRoot(container);\
+root.render(<App />);\
+\
+
+\f0 \
+create new directory public and index.html inside of it containing:\
+\
+
+\f1 \
+<!DOCTYPE html>\
+<html lang="en">\
+  <head>\
+    <meta charset="UTF-8" />\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
+    <title>Document</title>\
+  </head>\
+  <body>\
+    <main id="root"></main>\
+  </body>\
+</html>\
+\
+
+\f0 \
+
+\f1 \
+npm install --save-dev html-webpack-plugin\
+\
+
+\f0 \
+Add the following to webpack.config.js:\
+\
+
+\f1 \
+plugins: [\
+    new HtmlWebpackPlugin(\{\
+      template: './public/index.html',\
+      filename: './index.html',\
+    \}),\
+  ],\
+\
+
+\f0 \
+
+\f1 \
+npm start\
+\
+
+\f0 \
+Error: Module parse failed: 'import' and 'export' may appear only with 'sourceType: module' (1:0)\
+\
+Fix: change \'93type\'94 in package.json to \'93module\'94\
+\
+Error: \
+
+\fs24 \CocoaLigature1 [
+\fs28 \CocoaLigature0 webpack-cli
+\fs24 \CocoaLigature1 ]
+\fs28 \CocoaLigature0  Failed to load '/Users/sugihenson/code/sugihenson/react-from-scratch/webpack.config.js' config\
+
+\fs24 \CocoaLigature1 [
+\fs28 \CocoaLigature0 webpack-cli
+\fs24 \CocoaLigature1 ]
+\fs28 \CocoaLigature0  ReferenceError: require is not defined in ES module scope, you can use import instead\
+This file is being treated as an ES module because it has a '.js' file extension and '/Users/sugihenson/code/sugihenson/react-from-scratch/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.\
+\
+Fix: change webpack.config.js to webpack.config.cjs\
+\
+
+\f1 \
+npm install --save-dev webpack-dev-server\
+\
+
+\f0 \
+change the following in package.json in \'93scripts\'94\
+\
+
+\f1 \
+"start": "webpack serve --mode=development"\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0 \cf0 Npm start now starts development server!\
+\
+Created new git repo, added node modules to gitignore as per vscode suggestion\
+\
+Created new GitHub repo:\
+\
+
+\f1 gh repo create react-from-scratch --public --source=. --remote=origin\
+ga  .\
+gc -m\'94first commit\'94\
+gp origin master\
+\
+}

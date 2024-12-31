@@ -1,7 +1,9 @@
 import ReactDOM from "react-dom/client";
+import React from "react";
+import ItemList from "./item_list.js";
 
 function App() {
-  return <h1>Hello World</h1>;
+  return <ItemList />;
 }
 
 const container = document.getElementById("root");

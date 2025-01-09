@@ -1,6 +1,5 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
-import ItemList from "./item_list.js";
 import Weather from "./weather.js";
 
 function App() {

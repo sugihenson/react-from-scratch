@@ -5,7 +5,7 @@ export default function Weather() {
   const [weather, setWeather] = useState(null);
 
   // Only 50 requests per day are allowed with the free API key
-  const apiKey = "rK8nnJ3vYO7GZvJHaCdQS3Qxv6z1LUl6";
+  const apiKey = process.env.WEATHER_API_KEY;
 
   // Accuweather API requires a location key to get the current weather
   const locationResponse = fetch(

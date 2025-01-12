@@ -18,6 +18,10 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.css$/, // For CSS files
+        use: ["style-loader", "css-loader"], // Use style-loader and css-loader
+      },
     ],
   },
   plugins: [

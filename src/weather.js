@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./stylesheet.css";
 
 export default function Weather() {
   const [city, setCity] = useState("Paris");
   const [weather, setWeather] = useState(null);
+  const [message, setMessage] = useState("");
 
   // Only 50 requests per day are allowed with the free API key
   const apiKey = process.env.WEATHER_API_KEY;
@@ -37,18 +39,32 @@ export default function Weather() {
     setCity(event.target.value);
   };
 
+  // useEffect(() => {
+  //   setMessage(`The weather in ${city} is:`);
+  // }, [city]);
+
   return (
-    <>
-      <h2>Weather</h2>
-      <input type="text" value={city} onChange={handleChange} />
-      <button onClick={handleClick}>Get Weather</button>
-      {/* checks if weather is not null/undefined before returning elements */}
-      {weather && (
-        <div>
-          <h3>{weather.WeatherText}</h3>
-          <p>{weather.Temperature.Metric.Value}°C</p>
-        </div>
-      )}
-    </>
+    <div className="weatherContainer">
+      <div className="weatherCard">
+        <h2 className="weatherH2">Weather</h2>
+        <input
+          type="text"
+          value={city}
+          onChange={handleChange}
+          className="weatherInput"
+        />
+        <button onClick={handleClick} className="weatherButton">
+          Get Weather
+        </button>
+        <p>{message}</p>
+        {/* checks if weather is not null/undefined before returning elements */}
+        {weather && (
+          <div className="weatherInfo">
+            <h3>{weather.WeatherText}</h3>
+            <p>{weather.Temperature.Metric.Value}°C</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

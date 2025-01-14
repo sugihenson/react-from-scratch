@@ -59,7 +59,9 @@ export default function Weather() {
 
   // testing useEffect - updates the message when the user types in the text input
   useEffect(() => {
-    setMessage(`The weather in ${city} is:`);
+    city
+      ? setMessage(`The weather in ${city} is:`)
+      : setMessage("Please enter a city and click 'Get Weather'");
   }, [city]);
 
   return (

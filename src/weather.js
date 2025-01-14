@@ -62,8 +62,7 @@ export default function Weather() {
     city
       ? setMessage(`The weather in ${city} is:`)
       : setMessage("Please enter a city and click 'Get Weather'");
-  };
-
+  }, [city]);
 
   return (
     <div className="weatherContainer">

@@ -57,9 +57,10 @@ export default function Weather() {
     setCity(event.target.value);
   };
 
-  // useEffect(() => {
-  //   setMessage(`The weather in ${city} is:`);
-  // }, [city]);
+  // testing useEffect - updates the message when the user types in the text input
+  useEffect(() => {
+    setMessage(`The weather in ${city} is:`);
+  }, [city]);
 
   return (
     <div className="weatherContainer">
